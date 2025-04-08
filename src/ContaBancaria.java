@@ -21,6 +21,18 @@ public class ContaBancaria {
         System.out.println("*  Tipo da conta: " + tipoConta + "     *");
         System.out.println("**************************************");
 
+        String menu;
+        menu = """
+                1 - Consultar Saldo
+                2 - Receber Valor
+                3 - Transferir Valor
+                4 - Sair
+                """;
+        System.out.println(menu);
+        System.out.println("Escolha a operação desejada: ");
+        operacao = leitura.nextInt();
+
+
     }
 
 }
