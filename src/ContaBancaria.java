@@ -16,22 +16,32 @@ public class ContaBancaria {
         double valor;
         double saldoDaConta = 2000.00;
 
-        cabecalhoMenu(nomeDoCliente, tipoConta);
-
-        System.out.print("Escolha a operação desejada: ");
-        operacao = leitura.nextInt();
-
-        while (operacao != 4) {
-            if (operacao == 1) {
-                System.out.println("O saldo da conta é " + formatoMoeda.format(saldoDaConta));
-                System.out.println();
-            }
+        do {
             cabecalhoMenu(nomeDoCliente, tipoConta);
-            System.out.println("Escolha a operação desejada: ");
+            System.out.print("Escolha a operação desejada: ");
             operacao = leitura.nextInt();
-        }
-    }
 
+            switch (operacao) {
+                case 1 -> { System.out.println("O saldo da conta é " + formatoMoeda.format(saldoDaConta)); }
+                case 2 -> {
+                    System.out.print("Qual valor a receber: ");
+                    valor = leitura.nextDouble();
+                    saldoDaConta += valor;
+                    System.out.println("O saldo da conta é " + formatoMoeda.format(saldoDaConta));
+                }
+                case 3 -> {
+                    System.out.println("Operação de transferência ainda não implementada.");
+                }
+                case 4 -> {
+                    System.out.println("Encerrando o programa...");
+                }
+                default -> {
+                    System.out.println("Operação inválida. Tente novamente.");
+                }
+            }
+            System.out.println();
+        } while (operacao != 4);
+    }
     public static void cabecalhoMenu(String nomeDoCliente, String tipoConta) {
         String cabecalho = String.format("""
                 **************************************
