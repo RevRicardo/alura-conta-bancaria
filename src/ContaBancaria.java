@@ -16,23 +16,34 @@ public class ContaBancaria {
         double valor;
         double saldoDaConta = 2000.00;
 
-        System.out.println("**************************************");
-        System.out.println("*  Nome do cliente: " + nomeDoCliente + "  *");
-        System.out.println("*  Tipo da conta: " + tipoConta + "     *");
-        System.out.println("**************************************");
+        cabecalhoMenu(nomeDoCliente, tipoConta);
 
-        String menu;
-        menu = """
+        System.out.print("Escolha a operação desejada: ");
+        operacao = leitura.nextInt();
+
+        while (operacao != 4) {
+            if (operacao == 1) {
+                System.out.println("O saldo da conta é " + formatoMoeda.format(saldoDaConta));
+                System.out.println();
+            }
+            cabecalhoMenu(nomeDoCliente, tipoConta);
+            System.out.println("Escolha a operação desejada: ");
+            operacao = leitura.nextInt();
+        }
+    }
+
+    public static void cabecalhoMenu(String nomeDoCliente, String tipoConta) {
+        String cabecalho = String.format("""
+                **************************************
+                *  Nome do cliente: %s  *
+                *  Tipo da conta: %s     *
+                **************************************
+                
                 1 - Consultar Saldo
                 2 - Receber Valor
                 3 - Transferir Valor
                 4 - Sair
-                """;
-        System.out.println(menu);
-        System.out.println("Escolha a operação desejada: ");
-        operacao = leitura.nextInt();
-
-
+                """, nomeDoCliente, tipoConta);
+        System.out.println(cabecalho);
     }
-
 }
